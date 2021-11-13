@@ -1,16 +1,18 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import Grid from '@mui/material/Grid';
 import "./Footer.css"
 
 const Footer = () => {
     return (
-        <Container>
-            <div className="footer-container">
-                <small class="copyRight">Copyright © 2021 <br /> Find the Car You Want, Your Way </small>
+
+        <Grid container className="footer-container" spacing={2} >
+
+            <small class="copyRight">Copyright © 2021 <br /> Find the Car You Want, Your Way </small>
+        </Grid>
 
 
-            </div>
-        </Container>
+
+
     );
 
 };

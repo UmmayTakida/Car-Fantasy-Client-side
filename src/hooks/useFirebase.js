@@ -62,7 +62,7 @@ const useFirebase = () => {
         return () => unSubscribe;
     }, [auth])
     useEffect(() => {
-        fetch(`https://floating-coast-75168.herokuapp.com//users/${user.email}`)
+        fetch(`https://floating-coast-75168.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
 

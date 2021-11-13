@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import Button from '@mui/material/Button';
 const ManageAllOrders = () => {
 
     const [AllOrders, setAllOrders] = useState([]);
@@ -15,6 +15,24 @@ const ManageAllOrders = () => {
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [])
+    const handleDeleteOrders = id => {
+        const proceed = window.confirm('are u sure ,you want to delete')
+        if (proceed) {
+            const url = `https://floating-coast-75168.herokuapp.com/allOrders/${id}`
+            fetch(url, {
+                method: 'DELETE',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully')
+                        const remainingOrders = AllOrders.filter(order => order._id !== id)
+                        setAllOrders(remainingOrders)
+                    }
+                    console.log(data)
+                })
+        }
+    }
 
 
 
@@ -49,6 +67,10 @@ const ManageAllOrders = () => {
                                 <TableCell align="right">{row.Phone}</TableCell>
                                 <TableCell align="right">
                                     {row.status}
+
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Button onClick={() => handleDeleteOrders(row._id)} variant="contained" size="small" color="primary">Delete Order</Button>
 
                                 </TableCell>
 
