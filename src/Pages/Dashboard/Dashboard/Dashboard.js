@@ -43,51 +43,52 @@ function Dashboard(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    const boxStyle = {
+        p: 2,
+        m: 3
+    }
 
     const drawer = (
         <div>
             <Toolbar />
             <Divider />
+            <Link style={{ textDecoration: 'none' }} to="/home"> <Button sx={boxStyle} variant="contained" color="inherit">Home</Button></Link>
 
             {/* <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link> */}
+
+
+
+
+
+
+            {
+                admin && <Box >
+                    <Link to={`${url}/addNewAdmin`}><Button sx={boxStyle} variant="contained" color="inherit">Add New Admin</Button></Link>
+                    <Link to={`${url}/addNewProduct`}><Button sx={boxStyle} variant="contained" color="inherit">Add New Product</Button></Link>
+                    <Link to={`${url}/manageProducts`}><Button sx={boxStyle} variant="contained" color="inherit">Manage Products</Button></Link>
+                    <Link to={`${url}/manageAllOrders`}><Button sx={boxStyle} variant="contained" color="inherit">Manage All Orders</Button></Link>
+
+                </Box>
+            }
+            {
+                !admin && <Box>
+                    <Link style={{ textDecoration: 'none' }} to={`${url}/myOrders`}><Button sx={boxStyle} variant="contained" color="inherit">My Orders</Button></Link>
+                    <br />
+                    <Link to={`${url}/pay`}><Button sx={boxStyle} variant="contained" color="inherit">Payment</Button></Link>
+                    <br />
+                    <Link to={`${url}/reviews`}><Button sx={boxStyle} variant="contained" color="inherit">Give Reviews</Button></Link>
+
+                </Box>
+            }
             {user?.email ?
                 <Box>
-                    <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
-
-                    <br />
-
-
-
-                    <Button onClick={logout} color="inherit">logout</Button>
+                    <Button onClick={logout} variant="contained" color="inherit">logout</Button>
                 </Box>
                 :
                 <NavLink to="/login">   <Button color="inherit">Login</Button>
                 </NavLink>
             }
 
-
-
-
-
-            {
-                admin && <Box>
-                    <Link to={`${url}/addNewAdmin`}><Button color="inherit">Add New Admin</Button></Link>
-                    <Link to={`${url}/addNewProduct`}><Button color="inherit">Add New Product</Button></Link>
-                    <Link to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></Link>
-                    <Link to={`${url}/manageAllOrders`}><Button color="inherit">Manage All Orders</Button></Link>
-
-                </Box>
-            }
-            {
-                !admin && <Box>
-                    <Link to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></Link>
-                    <br />
-                    <Link to={`${url}/pay`}><Button color="inherit">Pay</Button></Link>
-                    <br />
-                    <Link to={`${url}/reviews`}><Button color="inherit">Give Reviews</Button></Link>
-
-                </Box>
-            }
 
 
 
@@ -162,6 +163,7 @@ function Dashboard(props) {
             >
                 <Toolbar />
                 <Switch>
+
                     <AdminRoute path={`${path}/addNewProduct`}>
                         <AddNewProduct></AddNewProduct>
 

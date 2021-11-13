@@ -31,7 +31,7 @@ const PlaceOrder = () => {
                         <CardMedia
                             component="img"
                             height="140"
-                            image={displayProduct.img}
+                            image={displayProduct?.img}
                             alt="green iguana"
                         />
                         <CardContent>

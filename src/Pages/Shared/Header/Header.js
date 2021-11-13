@@ -11,6 +11,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Header = () => {
     const { user, logout } = useAuth();
     return (
+
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
@@ -19,18 +20,18 @@ const Header = () => {
                         edge="start"
                         color="inherit"
                         aria-label="menu"
-                        sx={{ mr: 2 }}
+                        sx={{ mr: 5, px: 3 }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" edge="start" component="div" sx={{ flexGrow: 1 }}>
-                        Cars
+                        Cars fantasy
                     </Typography>
-                    <Link to="/explore"><Button color="inherit">Explore</Button></Link>
+                    <Link to="/explore"><Button variant="contained" color="inherit">Explore</Button></Link>
                     {
                         user?.email ?
                             <Box>
-                                <NavLink to="/dashboard">   <Button color="inherit">Dashboard</Button>
+                                <NavLink style={{ textDecoration: 'none' }} to="/dashboard">   <Button color="inherit" variant="contained">Dashboard</Button>
                                 </NavLink>
                                 <Button color="inherit"> <p>{user.displayName}</p></Button>
 
@@ -39,7 +40,7 @@ const Header = () => {
                             </Box>
 
                             :
-                            <NavLink to="/login">   <Button color="inherit">Login</Button>
+                            <NavLink style={{ textDecoration: 'none' }} to="/login">   <Button variant="contained" color="inherit">Login</Button>
                             </NavLink>
 
                     }

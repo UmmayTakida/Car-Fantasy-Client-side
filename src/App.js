@@ -13,12 +13,16 @@ import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 import PrivateRoute from './Pages/Home/Login/PrivateRoute/PrivateRoute';
 import Explore from "./Pages/Home/Explore/Explore"
+import Header from './Pages/Shared/Header/Header';
+import Footer from './Pages/Home/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
+
         <Router>
+          <Header></Header>
           <Switch>
             <Route exact path="/">
               <Home></Home>
@@ -50,6 +54,8 @@ function App() {
 
 
           </Switch>
+          <Footer></Footer>
+
         </Router>
       </AuthProvider>
 

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useForm } from "react-hook-form";
 
@@ -25,17 +26,17 @@ const AddNewProduct = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name", { required: true, maxLength: 40 })} placeholder="Name" />
+                <input style={{ width: '50%' }} {...register("name", { required: true, maxLength: 40 })} placeholder="Name" />
                 <br />
 
-                <input {...register("price")} placeholder="price" />
+                <input style={{ width: '50%' }} {...register("price")} placeholder="price" />
                 <br />
-                <input {...register("img")} placeholder="image url" />
+                <input style={{ width: '50%' }} {...register("img")} placeholder="image url" />
 
                 <br />
-                <textarea {...register("description")} placeholder="Description" />
+                <textarea style={{ width: '50%' }} {...register("description")} placeholder="Description" />
                 <br />
-                <input className="submit-btn" type="submit" />
+                <input style={{ width: '40%', border: "3px solid blue", borderRadius: '20px' }} className="submit-btn" type="submit" />
             </form>
 
         </div>

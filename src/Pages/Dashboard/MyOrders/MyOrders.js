@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { CircularProgress } from '@mui/material';
+import Button from '@mui/material/Button';
 const MyOrders = () => {
     const { user, isLoading } = useAuth();
 
@@ -21,6 +22,25 @@ const MyOrders = () => {
             .then(res => res.json())
             .then(data => setorders(data));
     }, [user.email])
+    const handleDeleteOrder = id => {
+        const proceed = window.confirm('are u sure ,you want to delete')
+        if (proceed) {
+            const url = `https://floating-coast-75168.herokuapp.com/allOrders/${id}`
+            fetch(url, {
+                method: 'DELETE',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully')
+                        const remainingOrders = orders.filter(order => order._id !== id)
+                        setorders(remainingOrders)
+                    }
+                    console.log(data)
+                })
+        }
+    }
+
     if (isLoading) {
         return <CircularProgress />
     }
@@ -51,6 +71,9 @@ const MyOrders = () => {
 
                                 }</TableCell>
                                 <TableCell align="right">{row.Phone}</TableCell>
+                                <TableCell align="right"><Button onClick={() => handleDeleteOrder(row._id)}>Cancel Order</Button></TableCell>
+
+
 
                             </TableRow>
                         ))}
